@@ -15,3 +15,9 @@ script:
   - docker stop cockroachdb_ubi8
   - docker rm cockroachdb_ubi8
   - docker images
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
