@@ -18,10 +18,8 @@
 #!/bin/bash
 
 # Install all dependencies
-yum makecache fast
 yum install -y git.ppc64le make.ppc64le gcc-c++.ppc64le autoconf.noarch ncurses-devel.ppc64le wget.ppc64le openssl-devel.ppc64le subscription-manager.ppc64le diffutils
 subscription-manager repos --enable rhel-7-server-for-power-le-rhscl-rpms
-yum makecache fast
 
 # Install nodejs
 NODE_VERSION=v12.18.2
@@ -64,7 +62,7 @@ git checkout COCKROACH_VERSION
 cp $CWD/patches/* .
 git apply cockroach_makefile.patch
 git apply jemalloc_stats_test.patch
-make buildoss | tee build_logs.txt
+make buildoss > build_logs.txt
 
 # Execute tests
 echo "The tests for following packages may fail:
@@ -72,7 +70,7 @@ echo "The tests for following packages may fail:
 But those failing tests pass when we execute them independently."
 
 export GOMAXPROCS=4
-make test TESTFLAGS='-v -count=1' GOFLAGS='-p 1' IGNORE_GOVERS=1 | tee test_logs.txt
+make test TESTFLAGS='-v -count=1' GOFLAGS='-p 1' IGNORE_GOVERS=1 > test_logs.txt
 
 # create tarball 
 tar czf cockroachdb_ubi8.tar.gz cockroachoss build_logs.txt test_logs.txt
