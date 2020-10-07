@@ -69,11 +69,11 @@ echo "The tests for following packages may fail:
   pkg/sql/
 But those failing tests pass when we execute them independently."
 
-export GOMAXPROCS=4
-make test TESTFLAGS='-v -count=1' GOFLAGS='-p 1' IGNORE_GOVERS=1 > test_logs.txt
+# export GOMAXPROCS=4
+# make test TESTFLAGS='-v -count=1' GOFLAGS='-p 1' IGNORE_GOVERS=1 > test_logs.txt
 
 # create tarball 
-tar czf cockroachdb_ubi8.tar.gz cockroachoss build_logs.txt test_logs.txt
-mv cockroachdb_ubi8.tar.gz /cockroachdb_ubi8.tar.gz
+# tar czf cockroachdb_ubi8.tar.gz cockroachoss build_logs.txt test_logs.txt
+# mv cockroachdb_ubi8.tar.gz /cockroachdb_ubi8.tar.gz
 ln -s ./cockroachoss /usr/bin/cockroach
 
