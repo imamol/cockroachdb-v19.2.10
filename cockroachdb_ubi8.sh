@@ -21,6 +21,8 @@
 yum install -y git.ppc64le make.ppc64le gcc-c++.ppc64le autoconf.noarch ncurses-devel.ppc64le wget.ppc64le openssl-devel.ppc64le subscription-manager.ppc64le diffutils
 subscription-manager repos --enable rhel-7-server-for-power-le-rhscl-rpms
 
+CWD=`pwd`
+
 # Install nodejs
 NODE_VERSION=v12.18.2
 DISTRO=linux-ppc64le 
@@ -29,8 +31,6 @@ tar -xzf node-$NODE_VERSION-$DISTRO.tar.gz
 export PATH=$CWD/node-$NODE_VERSION-$DISTRO/bin:$PATH 
 npm install yarn --global
 
-
-CWD=`pwd`
 
 # Compile and install cmake 3.16.1 (since CMake 3.1 or higher is required for the build)
 wget https://github.com/Kitware/CMake/releases/download/v3.16.1/cmake-3.16.1.tar.gz
