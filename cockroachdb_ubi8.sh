@@ -58,6 +58,7 @@ cd $COCKROACH_HOME
 git clone https://github.com/cockroachdb/cockroach.git
 cd cockroach
 git checkout $COCKROACH_VERSION 
+
 # This step assumes that you have already copied the patches directory as a sibbling of this script
 cp $CWD/patches/* .
 git apply cockroach_makefile.patch
