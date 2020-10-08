@@ -9,12 +9,11 @@ before_install:
 script:
   - mkdir out	
   - docker run -v `pwd`:/root/build --workdir=/root/build --name cockroachdb_ubi8 registry.access.redhat.com/ubi8/ubi:latest /bin/bash -c "bash cockroachdb_ubi8.sh"
-  - docker cp cockroachdb_ubi8:/cockroachdb_ubi.tar.gz out/
-  - docker commit cockroachdb_ubi8 cockroachdb-v19.2.10-ubi8
-  - docker ps
+  - docker cp cockroachdb_ubi8:/cockroachoss ./
   - docker stop cockroachdb_ubi8
   - docker rm cockroachdb_ubi8
-  - docker images
+  - chmod +x cockroach.sh
+  - docker build  -t imamol555/cockroach:v19.2.10-ubi8 .
 
 deploy:
   provider: script

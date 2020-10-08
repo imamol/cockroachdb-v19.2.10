@@ -75,5 +75,6 @@ But those failing tests pass when we execute them independently."
 # create tarball 
 # tar czf cockroachdb_ubi8.tar.gz cockroachoss build_logs.txt test_logs.txt
 # mv cockroachdb_ubi8.tar.gz /cockroachdb_ubi8.tar.gz
-ln -s ./cockroachoss /usr/bin/cockroach
+cp ./cockroachoss /
+
 
